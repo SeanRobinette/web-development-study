@@ -15,7 +15,7 @@
             "name": "Debug (Launch)-DiDemoApplication<di-demo>",
             "request": "launch",
             "mainClass": "com.robinette.didemo.DiDemoApplication",
-            "projectName": "di-demo"
+            "projectName": "di-demo",
         }
     ]
 }

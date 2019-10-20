@@ -1,0 +1,31 @@
+# Comment!
+
+name: Sean
+
+names:
+  Brian
+  Kevin
+  Christina
+  Sean
+
+hashtag: "#"
+
+book:
+  author:
+    Joe Buck
+  publisher:
+    Random House
+
+truth: yes
+truth2: True
+truth3: true
+
+string: "Hello, world!"
+
+include_lines: |
+  Blah blah blah
+  This will show up on a new line
+
+ignore_new_lines: >
+  Blah blah blah
+  This will show up on the same line

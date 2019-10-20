@@ -1,0 +1,5 @@
+guru:
+  jms:
+    username: Sean
+    password: somepassword
+    dburl: fjsdklfjsdl
