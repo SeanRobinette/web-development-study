@@ -3,7 +3,6 @@ package com.robinette.services.map;
 import java.util.Set;
 
 import com.robinette.model.Owner;
-import com.robinette.services.CrudService;
 import com.robinette.services.OwnerService;
 
 public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
