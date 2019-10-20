@@ -2,13 +2,20 @@ package com.robinette.services.map;
 
 import java.util.Set;
 
+import com.robinette.model.Specialty;
 import com.robinette.model.Vet;
+import com.robinette.services.SpecialtyService;
 import com.robinette.services.VetService;
 
 import org.springframework.stereotype.Service;
 
 @Service
 public class VetMapService extends AbstractMapService<Vet, Long> implements VetService {
+    private final SpecialtyService specialtyService;
+
+    public VetMapService(SpecialtyService specialtyService) {
+        this.specialtyService = specialtyService;
+    }
 
     @Override
     public void deleteById(Long id) {
@@ -32,6 +39,16 @@ public class VetMapService extends AbstractMapService<Vet, Long> implements VetS
 
     @Override
     public Vet save(Vet object) {
-        return super.save(object);
+        if(object != null) {
+            if (object.getSpecialties().size() > 0) {
+                object.getSpecialties().forEach(specialty -> {
+                    if (specialty.getId() == null) {
+                        specialtyService.save(specialty);
+                    }
+                });
+            }
+            return super.save(object);
+        }
+        return null;
     }
 }
