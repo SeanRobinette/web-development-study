@@ -4,8 +4,6 @@ import com.robinette.model.Owner;
 import com.robinette.model.Vet;
 import com.robinette.services.OwnerService;
 import com.robinette.services.VetService;
-import com.robinette.services.map.OwnerMapService;
-import com.robinette.services.map.VetMapService;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -16,9 +14,9 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
 
-    public DataLoader() {
-        ownerService = new OwnerMapService();
-        vetService = new VetMapService();
+    public DataLoader(OwnerService ownerService, VetService vetService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
     }
 
 	@Override

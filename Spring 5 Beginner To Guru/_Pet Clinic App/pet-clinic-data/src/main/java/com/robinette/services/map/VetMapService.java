@@ -5,6 +5,9 @@ import java.util.Set;
 import com.robinette.model.Vet;
 import com.robinette.services.VetService;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class VetMapService extends AbstractMapService<Vet, Long> implements VetService {
 
     @Override

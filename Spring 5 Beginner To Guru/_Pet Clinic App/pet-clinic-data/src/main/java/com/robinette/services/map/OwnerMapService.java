@@ -5,6 +5,9 @@ import java.util.Set;
 import com.robinette.model.Owner;
 import com.robinette.services.OwnerService;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
 
     @Override
