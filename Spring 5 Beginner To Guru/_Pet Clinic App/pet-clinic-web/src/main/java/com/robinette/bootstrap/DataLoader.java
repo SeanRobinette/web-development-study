@@ -1,8 +1,10 @@
 package com.robinette.bootstrap;
 
 import com.robinette.model.Owner;
+import com.robinette.model.PetType;
 import com.robinette.model.Vet;
 import com.robinette.services.OwnerService;
+import com.robinette.services.PetTypeService;
 import com.robinette.services.VetService;
 
 import org.springframework.boot.CommandLineRunner;
@@ -13,14 +15,24 @@ public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final PetTypeService petTypeService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petTypeService = petTypeService;
     }
 
 	@Override
 	public void run(String... args) throws Exception {
+        PetType cat = new PetType();
+        cat.setName("Cat");
+        PetType savedCatPetType = petTypeService.save(cat);
+
+        PetType dog = new PetType();
+        dog.setName("dog");
+        PetType savedDogPetType = petTypeService.save(dog);
+
         Owner owner1 = new Owner();
         owner1.setFirstName("Sean");
         owner1.setLastName("Robinette");
