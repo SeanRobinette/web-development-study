@@ -12,7 +12,6 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
 
 @Configuration
-@PropertySource({"classpath:datasource.properties"})
 public class PropertyConfig {
 
     @Autowired
@@ -34,10 +33,11 @@ public class PropertyConfig {
 
     @Bean
     public FakeDataSource fakeDataSource() {
+        System.out.println(user);
         FakeDataSource fakeDataSource = new FakeDataSource();
-        String envProp = env.getProperty("USERNAME");
+        String envProp = env.getProperty("OVERRIDE_USERNAME");
         if(envProp != null)
-            fakeDataSource.setUsername(env.getProperty("USERNAME"));
+            fakeDataSource.setUsername(env.getProperty("OVERRIDE_USERNAME"));
         else
             fakeDataSource.setUsername(user);
         fakeDataSource.setPassword(password);

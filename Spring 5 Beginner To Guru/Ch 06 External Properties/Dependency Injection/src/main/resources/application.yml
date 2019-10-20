@@ -3,3 +3,9 @@ guru:
     username: Sean
     password: somepassword
     dburl: fjsdklfjsdl
+---
+spring:
+  profiles: de
+guru:
+  jms:
+    username: Johann
