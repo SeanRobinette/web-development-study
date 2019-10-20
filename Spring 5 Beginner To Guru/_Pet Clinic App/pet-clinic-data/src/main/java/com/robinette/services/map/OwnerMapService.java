@@ -31,8 +31,8 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
     }
 
     @Override
-    public Owner save(Long id, Owner object) {
-        return super.save(id, object);
+    public Owner save(Owner object) {
+        return super.save(object);
     }
     public Owner findByLastName(String lastName) {
         return map.entrySet()
