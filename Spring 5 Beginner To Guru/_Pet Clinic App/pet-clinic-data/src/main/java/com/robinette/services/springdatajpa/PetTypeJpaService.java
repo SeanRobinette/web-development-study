@@ -1,8 +1,8 @@
 package com.robinette.services.springdatajpa;
 
-import com.robinette.model.Pet;
+import com.robinette.model.PetType;
 import com.robinette.repositories.PetTypeRepository;
-import com.robinette.services.PetService;
+import com.robinette.services.PetTypeService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Service
 @Profile("springdatajpa")
-public class PetTypeJpaService implements PetService {
+public class PetTypeJpaService implements PetTypeService {
     private final PetTypeRepository petTypeRepository;
 
     public PetTypeJpaService(PetTypeRepository petTypeRepository) {
@@ -19,24 +19,24 @@ public class PetTypeJpaService implements PetService {
     }
 
     @Override
-    public Set<Pet> findAll() {
-        Set<Pet> pets = new HashSet<>();
-        petTypeRepository.findAll().iterator().forEachRemaining(pets::add);
-        return pets;
+    public Set<PetType> findAll() {
+        Set<PetType> petTypes = new HashSet<>();
+        petTypeRepository.findAll().iterator().forEachRemaining(petTypes::add);
+        return petTypes;
     }
 
     @Override
-    public Pet findById(Long aLong) {
+    public PetType findById(Long aLong) {
         return petTypeRepository.findById(aLong).orElse(null);
     }
 
     @Override
-    public Pet save(Pet object) {
+    public PetType save(PetType object) {
         return petTypeRepository.save(object);
     }
 
     @Override
-    public void deleteByObject(Pet object) {
+    public void deleteByObject(PetType object) {
         petTypeRepository.delete(object);
     }
 
