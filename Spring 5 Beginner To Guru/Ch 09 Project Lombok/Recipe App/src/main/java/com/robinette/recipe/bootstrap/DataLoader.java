@@ -5,13 +5,14 @@ import com.robinette.recipe.model.*;
 import com.robinette.recipe.repositories.CategoryRepository;
 import com.robinette.recipe.repositories.RecipeRepository;
 import com.robinette.recipe.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.*;
 
-
+@Slf4j
 @Component
 public class DataLoader implements CommandLineRunner {
     private final UnitOfMeasureRepository uomRepository;
@@ -28,6 +29,7 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        log.debug("Loading bootstrap data");
         recipeRepository.saveAll(getRecipeList());
     }
 
