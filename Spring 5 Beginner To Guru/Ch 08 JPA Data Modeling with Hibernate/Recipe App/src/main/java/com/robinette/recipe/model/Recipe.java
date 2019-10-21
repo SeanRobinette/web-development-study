@@ -19,11 +19,13 @@ public class Recipe {
     private String directions;
     //todo add
     //private Difficulty difficulty
+
     @Lob
     private Byte[] image;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredients;
     public Long getId() {
