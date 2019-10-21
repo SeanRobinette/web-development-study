@@ -1,10 +1,7 @@
 package com.robinette.bootstrap;
 
 import com.robinette.model.*;
-import com.robinette.services.OwnerService;
-import com.robinette.services.PetTypeService;
-import com.robinette.services.SpecialtyService;
-import com.robinette.services.VetService;
+import com.robinette.services.*;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -18,12 +15,14 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtyService specialtyService;
+    private final VisitService visitService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialtyService = specialtyService;
+        this.visitService = visitService;
     }
 
 	@Override
@@ -65,7 +64,6 @@ public class DataLoader implements CommandLineRunner {
         luke.setBirthDate(LocalDate.now());
         luke.setOwner(owner1);
         owner1.getPets().add(luke);
-
         ownerService.save(owner1);
 
         Owner owner2 = new Owner();
@@ -81,7 +79,6 @@ public class DataLoader implements CommandLineRunner {
         katy.setBirthDate(LocalDate.now());
         katy.setOwner(owner2);
         owner2.getPets().add(katy);
-
         ownerService.save(owner2);
 
         System.out.println("Loaded owners...");
@@ -98,5 +95,11 @@ public class DataLoader implements CommandLineRunner {
         vet2.getSpecialties().add(savedSurgery);
         vetService.save(vet2);
         System.out.println("Loaded vets...");
+
+        Visit lukeVisit = new Visit();
+        lukeVisit.setPet(luke);
+        lukeVisit.setDate(LocalDate.now());
+        lukeVisit.setDescription("Dying of lack of cuddles");
+        visitService.save(lukeVisit);
     }
 }
