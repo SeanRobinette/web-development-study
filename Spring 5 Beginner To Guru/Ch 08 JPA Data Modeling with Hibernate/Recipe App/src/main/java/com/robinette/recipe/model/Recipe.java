@@ -41,6 +41,11 @@ public class Recipe {
     @Enumerated(value = EnumType.STRING)
     private Difficulty difficulty;
 
+    public void addIngredient(Ingredient toAdd) {
+        ingredients.add(toAdd);
+        toAdd.setRecipe(this);
+    }
+    // Getters and setters
     public Long getId() {
         return id;
     }
@@ -119,6 +124,7 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+        notes.setRecipe(this);
     }
 
     public Set<Category> getCategories() {
