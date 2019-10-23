@@ -38,6 +38,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .successHandler(new SavedRequestAwareAuthenticationSuccessHandler())
                     .loginProcessingUrl("/login")
                     .permitAll()
+                .and()
+                .logout()
+                    .permitAll()
         ;
     }
 }
