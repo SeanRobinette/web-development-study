@@ -15,7 +15,8 @@
 <div class="container">
     <form method="post" action="/login">
         <h2>Log In</h2>
-        <p class="alert alert-danger" th:if="${error}">Failed to log in. Incorrect username or password.</p>
+        <p class="alert alert-danger" th:if="${param.error != null}">Failed to log in. Incorrect username or password.</p>
+        <p class="alert alert-success" th:if="${param.logout != null}">You have been logged out.</p>
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
