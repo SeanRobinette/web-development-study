@@ -11,7 +11,6 @@ public class IndexController {
 
     @RequestMapping({"","/","/index","/index.html"})
     public String index(Model model, Principal principal) {
-        model.addAttribute("data", "This text was added by the IndexController.");
         return "index";
     }
 }
