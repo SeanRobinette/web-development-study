@@ -10,7 +10,11 @@
 </head>
 <body>
 <h1>Security Test Program</h1>
-<p th:text="${data}">Hello Failure!</p>
+<div>
+    <div>Username: <span th:text="${#authentication.principal.username}"></span></div>
+    <div>Role: <span th:text="${#authentication.principal.authorities}"></span></div>
+</div>
+<p th:text="${data}">Something weird happened...</p>
 <form action="/logout" method="post">
     <input name="_csrf" type="hidden" th:value="${_csrf.token}" />
     <input type="submit" value="Log Out">
