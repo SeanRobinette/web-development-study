@@ -9,23 +9,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script></head>
 </head>
 <body>
-<h1>Security Test Program</h1>
+<h1>Access Denied</h1>
 <div>
-    <div>Username: <span th:text="${#authentication.principal.username}"></span></div>
-    <div>Roles: <span th:text="${#authentication.principal.authorities}"></span></div>
+    <div>Beep boop WHIIRRRRR CRASH. You have attempted to access a resource you lack permission for.</div>
 </div>
-<p sec:authorize="hasRole('ROLE_MANAGER')">
-    <a href="/leaders">Leadership retreat</a> (only for managers)
+<p>
+    <a href="/">Back to home page</a>
 </p>
-<p sec:authorize="hasRole('ROLE_ADMIN')">
-    <a href="/admin">Admin dashboard</a> (only for administrators)
-</p>
-<div>
-
-</div>
-<form action="/logout" method="post">
-    <input name="_csrf" type="hidden" th:value="${_csrf.token}" />
-    <input type="submit" value="Log Out">
-</form>
 </body>
 </html>

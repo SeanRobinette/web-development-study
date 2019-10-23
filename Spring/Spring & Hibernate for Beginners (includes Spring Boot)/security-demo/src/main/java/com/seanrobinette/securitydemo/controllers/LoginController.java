@@ -13,4 +13,9 @@ public class LoginController {
         model.addAttribute("error", error != null);
         return "login";
     }
+
+    @RequestMapping("/accessDenied")
+    public String accessDenied() {
+        return "accessdenied";
+    }
 }
