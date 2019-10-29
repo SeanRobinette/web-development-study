@@ -1,5 +1,6 @@
 package com.robinette.recipe.model;
 
+import com.robinette.recipe.domain.Category;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

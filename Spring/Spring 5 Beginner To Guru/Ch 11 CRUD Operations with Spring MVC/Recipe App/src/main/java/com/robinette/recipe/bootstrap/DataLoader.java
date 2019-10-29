@@ -1,7 +1,7 @@
 package com.robinette.recipe.bootstrap;
 
 
-import com.robinette.recipe.model.*;
+import com.robinette.recipe.domain.*;
 import com.robinette.recipe.repositories.CategoryRepository;
 import com.robinette.recipe.repositories.RecipeRepository;
 import com.robinette.recipe.repositories.UnitOfMeasureRepository;
@@ -124,7 +124,7 @@ public class DataLoader implements CommandLineRunner {
         tacoRecipe.setDescription("Spicy Grilled Chicken Tacos");
         tacoRecipe.setPrepTime(20);
         tacoRecipe.setCookTime(15);
-        tacoRecipe.setDifficulty(Difficulty.MEDIUM);
+        tacoRecipe.setDifficulty(Difficulty.MODERATE);
         tacoRecipe.setServings(5);
         tacoRecipe.setSource("");
         tacoRecipe.setUrl("https://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/");

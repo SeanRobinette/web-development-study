@@ -1,44 +1,48 @@
 package com.robinette.recipe.controllers;
 
-import com.robinette.recipe.model.Recipe;
+import com.robinette.recipe.domain.Recipe;
 import com.robinette.recipe.services.RecipeService;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anySet;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
-class IndexControllerTest {
-    IndexController indexController;
+/**
+ * Created by jt on 6/17/17.
+ */
+public class IndexControllerTest {
 
     @Mock
     RecipeService recipeService;
+
     @Mock
     Model model;
 
-    @BeforeEach
-    void setUp() {
+    IndexController controller;
+
+    @Before
+    public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        indexController = new IndexController(recipeService);
+
+        controller = new IndexController(recipeService);
     }
 
     @Test
-    void testMockMVC() throws Exception {
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(indexController).build();
+    public void testMockMVC() throws Exception {
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
 
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
@@ -46,26 +50,31 @@ class IndexControllerTest {
     }
 
     @Test
-    void index() {
-        // given
+    public void getIndexPage() throws Exception {
+
+        //given
         Set<Recipe> recipes = new HashSet<>();
         recipes.add(new Recipe());
-        Recipe r2 = new Recipe();
-        r2.setId(2L);
-        recipes.add(r2);
+
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+
+        recipes.add(recipe);
 
         when(recipeService.getAllRecipes()).thenReturn(recipes);
 
         ArgumentCaptor<Set<Recipe>> argumentCaptor = ArgumentCaptor.forClass(Set.class);
 
-        // when
-        String result = indexController.index(model);
+        //when
+        String viewName = controller.index(model);
 
-        // then
-        assertEquals(result, "index");
+
+        //then
+        assertEquals("index", viewName);
         verify(recipeService, times(1)).getAllRecipes();
         verify(model, times(1)).addAttribute(eq("recipes"), argumentCaptor.capture());
         Set<Recipe> setInController = argumentCaptor.getValue();
-        assertEquals(setInController.size(), 2);
+        assertEquals(2, setInController.size());
     }
+
 }

@@ -1,41 +1,45 @@
 package com.robinette.recipe.repositories;
 
-import com.robinette.recipe.model.UnitOfMeasure;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+import com.robinette.recipe.domain.UnitOfMeasure;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
 
-@ExtendWith(SpringExtension.class)
+/**
+ * Created by jt on 6/17/17.
+ */
+@RunWith(SpringRunner.class)
 @DataJpaTest
-class UnitOfMeasureRepositoryIT {
+public class UnitOfMeasureRepositoryIT {
 
     @Autowired
     UnitOfMeasureRepository unitOfMeasureRepository;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() throws Exception {
     }
 
     @Test
-    void findByDescription() {
-        Optional<UnitOfMeasure> teaspoonUom = unitOfMeasureRepository.findByDescription("Teaspoon");
+    public void findByDescription() throws Exception {
 
-        assertEquals(teaspoonUom.get().getDescription(), "Teaspoon");
+        Optional<UnitOfMeasure> uomOptional = unitOfMeasureRepository.findByDescription("Teaspoon");
+
+        assertEquals("Teaspoon", uomOptional.get().getDescription());
     }
 
     @Test
-    void findByDescriptionCup() {
-        Optional<UnitOfMeasure> teaspoonUom = unitOfMeasureRepository.findByDescription("Cup");
+    public void findByDescriptionCup() throws Exception {
 
-        assertEquals(teaspoonUom.get().getDescription(), "Cup");
+        Optional<UnitOfMeasure> uomOptional = unitOfMeasureRepository.findByDescription("Cup");
+
+        assertEquals("Cup", uomOptional.get().getDescription());
     }
+
 }

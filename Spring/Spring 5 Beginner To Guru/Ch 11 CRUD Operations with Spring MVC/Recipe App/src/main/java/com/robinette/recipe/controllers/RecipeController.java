@@ -1,6 +1,6 @@
 package com.robinette.recipe.controllers;
 
-import com.robinette.recipe.model.Recipe;
+import com.robinette.recipe.domain.Recipe;
 import com.robinette.recipe.services.RecipeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

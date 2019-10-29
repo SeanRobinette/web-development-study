@@ -1,6 +1,6 @@
-package com.robinette.recipe.viewmodel;
+package com.robinette.recipe.commands;
 
-import com.robinette.recipe.model.Difficulty;
+import com.robinette.recipe.domain.Difficulty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,10 +8,13 @@ import lombok.Setter;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Created by jt on 6/21/17.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
-public class ViewRecipe {
+public class RecipeCommand {
     private Long id;
     private String description;
     private Integer prepTime;
@@ -20,8 +23,8 @@ public class ViewRecipe {
     private String source;
     private String url;
     private String directions;
-    private Set<ViewIngredient> ingredients = new HashSet<>();
+    private Set<IngredientCommand> ingredients = new HashSet<>();
     private Difficulty difficulty;
-    private ViewNotes notes;
-    private Set<ViewCategory> categories = new HashSet<>();
+    private NotesCommand notes;
+    private Set<CategoryCommand> categories = new HashSet<>();
 }

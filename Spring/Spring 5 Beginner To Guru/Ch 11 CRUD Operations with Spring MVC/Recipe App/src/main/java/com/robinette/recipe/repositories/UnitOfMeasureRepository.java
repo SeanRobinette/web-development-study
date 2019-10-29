@@ -1,6 +1,6 @@
 package com.robinette.recipe.repositories;
 
-import com.robinette.recipe.model.UnitOfMeasure;
+import com.robinette.recipe.domain.UnitOfMeasure;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

@@ -1,6 +1,6 @@
 package com.robinette.recipe.repositories;
 
-import com.robinette.recipe.model.Category;
+import com.robinette.recipe.domain.Category;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

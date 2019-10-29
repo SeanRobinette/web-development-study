@@ -1,6 +1,9 @@
 package com.robinette.recipe.services;
 
-import com.robinette.recipe.model.Recipe;
+import com.robinette.recipe.commands.RecipeCommand;
+import com.robinette.recipe.converters.RecipeCommandToRecipe;
+import com.robinette.recipe.converters.RecipeToRecipeCommand;
+import com.robinette.recipe.domain.Recipe;
 import com.robinette.recipe.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -12,10 +15,20 @@ import java.util.Set;
 @Slf4j
 @Service
 public class RecipeServiceImpl implements RecipeService {
-    private final RecipeRepository recipeRepository;
+    @Override
+    public RecipeCommand saveRecipeCommand(RecipeCommand testRecipeCommand) {
+        return null;
+    }
 
-    public RecipeServiceImpl(RecipeRepository recipeRepository) {
+    private final RecipeRepository recipeRepository;
+    private final RecipeCommandToRecipe recipeCommandToRecipe;
+    private final RecipeToRecipeCommand recipeToRecipeCommand;
+    public RecipeServiceImpl(RecipeRepository recipeRepository,
+                             RecipeCommandToRecipe recipeCommandToRecipe,
+                             RecipeToRecipeCommand recipeToRecipeCommand) {
         this.recipeRepository = recipeRepository;
+        this.recipeCommandToRecipe = recipeCommandToRecipe;
+        this.recipeToRecipeCommand = recipeToRecipeCommand;
     }
 
     @Override

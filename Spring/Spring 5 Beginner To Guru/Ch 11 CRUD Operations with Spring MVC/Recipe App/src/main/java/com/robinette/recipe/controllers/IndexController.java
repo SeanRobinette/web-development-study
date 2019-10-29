@@ -1,7 +1,7 @@
 package com.robinette.recipe.controllers;
 
-import com.robinette.recipe.model.Category;
-import com.robinette.recipe.model.UnitOfMeasure;
+import com.robinette.recipe.domain.Category;
+import com.robinette.recipe.domain.UnitOfMeasure;
 import com.robinette.recipe.repositories.CategoryRepository;
 import com.robinette.recipe.repositories.UnitOfMeasureRepository;
 import com.robinette.recipe.services.RecipeService;
