@@ -4,10 +4,12 @@ import com.seanrobinette.mvcrest.api.v1.mapper.CategoryMapper;
 import com.seanrobinette.mvcrest.api.v1.model.CategoryDTO;
 import com.seanrobinette.mvcrest.domain.Category;
 import com.seanrobinette.mvcrest.repositories.CategoryRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class CategoryServiceImpl implements CategoryService {
 
     private final CategoryMapper categoryMapper;
