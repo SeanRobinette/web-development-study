@@ -80,7 +80,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void deleleCustomerById(Long id) {
+    public void deleteCustomerById(Long id) {
         if(!customerRepository.findById(id).isPresent())
             throw new ResourceNotFoundException();
         customerRepository.deleteById(id);

@@ -4,7 +4,6 @@ import com.seanrobinette.mvcrest.api.v1.model.CustomerDTO;
 import com.seanrobinette.mvcrest.api.v1.model.CustomerListDTO;
 import com.seanrobinette.mvcrest.services.CustomerService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -50,7 +49,7 @@ public class CustomerController {
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteCustomer(@PathVariable Long id) {
-        customerService.deleleCustomerById(id);
+        customerService.deleteCustomerById(id);
     }
 
 }

@@ -2,8 +2,10 @@ package com.seanrobinette.mvcrest.bootstrap;
 
 import com.seanrobinette.mvcrest.domain.Category;
 import com.seanrobinette.mvcrest.domain.Customer;
+import com.seanrobinette.mvcrest.domain.Vendor;
 import com.seanrobinette.mvcrest.repositories.CategoryRepository;
 import com.seanrobinette.mvcrest.repositories.CustomerRepository;
+import com.seanrobinette.mvcrest.repositories.VendorRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -12,10 +14,12 @@ public class Bootstrap implements CommandLineRunner {
 
     private final CategoryRepository categoryRepository;
     private final CustomerRepository customerRepository;
+    private final VendorRepository vendorRepository;
 
-    public Bootstrap(CategoryRepository categoryRepository, CustomerRepository customerRepository) {
+    public Bootstrap(CategoryRepository categoryRepository, CustomerRepository customerRepository, VendorRepository vendorRepository) {
         this.categoryRepository = categoryRepository;
         this.customerRepository = customerRepository;
+        this.vendorRepository = vendorRepository;
     }
 
     @Override
@@ -58,5 +62,15 @@ public class Bootstrap implements CommandLineRunner {
         customerRepository.save(david);
         customerRepository.save(alice);
         System.out.println("Customers loaded: " + customerRepository.count());
+
+        Vendor fruitVendor = new Vendor();
+        fruitVendor.setName("Western Tasty Fruits Ltd.");
+
+        Vendor exoticFruits = new Vendor();
+        exoticFruits.setName("Exotic Fruits Company");
+
+        vendorRepository.save(fruitVendor);
+        vendorRepository.save(exoticFruits);
+        System.out.println("Vendors loaded: " + vendorRepository.count());
     }
 }
