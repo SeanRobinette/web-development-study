@@ -3,9 +3,12 @@ package com.seanrobinette.mvcrest.controllers;
 import com.seanrobinette.mvcrest.api.v1.model.CustomerDTO;
 import com.seanrobinette.mvcrest.api.v1.model.CustomerListDTO;
 import com.seanrobinette.mvcrest.services.CustomerService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+@Api(description = "This is the Customer Controller")
 @RestController
 @RequestMapping(CustomerController.API_ROOT)
 public class CustomerController {
@@ -17,6 +20,7 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
+    @ApiOperation(value = "This will get a list of all customers.", notes = "This is a note!")
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public CustomerListDTO findAll() {
